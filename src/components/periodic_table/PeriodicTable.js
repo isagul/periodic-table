@@ -4,12 +4,21 @@ import './PeriodicTable.scss';
 
 const PeriodicTable = () => {
     const { state } = useContext(Store);
-
+    console.log(state);
     const elementButton = (startIndex, endIndex) => {
         return (
             state.elements.length > 0 &&
             state.elements.slice(startIndex, endIndex).map((element, index) => {
-                return <button key={index}>{element.name_small}</button>
+            return (
+                <button className={`color-${element.group_id}`} key={index}>
+                    {
+                        element.molar !== null &&
+                        <p className="molar">{Number.parseFloat(element.molar).toFixed(2)}</p> 
+                    }                    
+                    <p className="group-name">{element.name_small}</p>
+                    <p className="el-order"> {element.el_order}</p>
+                </button>
+                )
             })
         )
     }

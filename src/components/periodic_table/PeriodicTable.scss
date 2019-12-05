@@ -1,35 +1,56 @@
 @import '../../variables.scss';
 
 .periodic-table-component {   
-    width:1170px; 
-    margin-top: 10rem;
+    width:1530px; 
+    margin-top: 3rem;
     padding: 1rem;
     .periodic-table {
         &:first-child, &:nth-child(2), &:nth-child(3) {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-        }                
+        }           
+        &:nth-child(4) {
+            display: flex;
+            flex-wrap: wrap;
+        }     
     }
     .periodic-table-footer {
-        width: 975px;
+        width: 1275px;
         display: block;
         margin-top: 2rem;
         margin-left: auto;
         margin-right: auto;
     }
     button {
-        height: 60px;
-        width: 60px;
-        background-color: $non-matel;
+        height: 80px;
+        width: 80px;
         border:none;
         margin: 0 5px 5px 0;
         color:white;
-        font-weight: bold;
+        opacity: 0.9;
+        box-shadow: 3px 3px lightgrey;
+        p {
+            margin: 0;
+        }
+        .molar {
+            font-size:10px;
+            opacity: 0.7;
+        }
+        .group-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin:8px 0;
+        }
+        .el-order {
+            font-size:10px;
+            opacity: 0.7;
+        }
         &:hover {
             cursor: pointer;
             background: #323232;
             border-color: #000;
+            opacity: 1;
         }
     }
 }
@@ -38,59 +59,29 @@
     background: $non-matel;
 }
 .color-2 {
-    background: $non-metal-dark;
-}
-.color-3 {
     background: $alkal-metal;
 }
-.color-4 {
-    background: $alkal-metal-dark;
-}
-.color-5 {
+.color-3 {
     background: $alkaline-metal;
 }
-.color-6 {
-    background: $alkaline-metal-dark;
-}
-.color-7 {
+.color-4 {
     background: $transition-metal;
 }
-.color-8 {
-    background: $transition-metal-dark;
-}
-.color-9 {
+.color-5 {
     background: $metaloid;
 }
-.color-10 {
-    background: $metal-dark;
-}
-.color-11 {
+.color-6 {
     background: $metal;
 }
-.color-12 {
-    background: $metaloid-dark;
-}
-.color-13 {
+.color-7 {
     background: $halojen;
 }
-.color-14 {
-    background: $halojen-dark;
-}
-.color-15 {
+.color-8 {
     background: $soygaz;
 }
-.color-16 {
-    background: $soygaz-dark;
-}
-.color-17 {
+.color-9 {
     background: $lantanit;
 }
-.color-18 {
-    background: $lantanit-dark;
-}
-.color-19 {
+.color-10 {
     background: $actinide;
-}
-.color-20 {
-    background: $actinide-dark;
 }
