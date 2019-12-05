@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react';
+import { Store } from './store';
+import PeriodicTable from './components/periodic_table/PeriodicTable';
+import RightBar from './components/right_bar/RightBar';
+import './App.scss';
 
 function App() {
+  const { dispatch } = useContext(Store);
+
+  useEffect(() => {
+    const fetchElements = () => {
+      fetch('https://periodic-table-10001.herokuapp.com/api/v1/elements')
+      .then(response => response.json())
+      .then(resp => {
+        if (resp.status === "SUCCESS") {
+          dispatch({
+            type: 'SET_ELEMENTS',
+            payload: resp.data
+          })
+        }
+      });
+    }
+    fetchElements();
+  }, [dispatch]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <PeriodicTable />
+      <RightBar />
     </div>
   );
 }
