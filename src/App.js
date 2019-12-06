@@ -26,8 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <PeriodicTable />
-      <RightBar />
+      <PeriodicTable />      
     </div>
   );
 }

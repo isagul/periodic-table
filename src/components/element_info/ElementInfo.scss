@@ -1,0 +1,109 @@
+@import '../../variables.scss';
+
+.element-info {
+    /*top: 105px;
+    left: 215px;*/
+    position: absolute;
+    left: calc(11vw - 7.11112px);
+    height: 200px;
+    width: calc(42vw - 5.5556px);
+    z-index: 999;
+    background: transparent;
+    color: #000;
+    .title {
+        display: flex;
+        margin-left: 10px;
+        margin-bottom: 2rem;
+        .symbol {
+            background: #35404d;
+            width: 6rem;
+            height: 6rem;
+            display: flex;
+            font-size: calc(3vw - 10px);
+            align-items: center;
+            justify-content: center;
+        }
+        .name {
+            padding-left: 1rem;
+            h3 {
+                font-weight: 500;
+                font-size: 1.5rem;
+                line-height: 1.1;
+                margin-bottom: .7rem;
+            }
+            span {
+                opacity: .4;
+                font-size: .9rem;
+            }
+        }
+    }
+    .detail {
+        display: flex;
+        width: 100%;
+        .detail-atom {
+            width: 50%;
+            padding: 10px;
+            font-weight: 500;
+            .info {
+                opacity: .5;
+                font-weight: bold;
+            }
+            .val {
+                font-weight: bold;
+                border-bottom: none;
+            }
+            p {
+                margin: 0
+            }
+        }
+    }
+    
+    .val-group-name {
+        font-weight: bold;
+        text-align: center;
+        font-size: 3vw;
+        margin-bottom: 0;
+    }
+
+    .color-info-1 {
+        color: $non-matel;
+        border-bottom: .4rem solid $non-matel;
+    }
+    .color-info-2 {
+        color: $alkal-metal;
+        border-bottom: .4rem solid $alkal-metal;
+    }
+    .color-info-3 {
+        color: $alkaline-metal;
+        border-bottom: .4rem solid $alkaline-metal;
+    }
+    .color-info-4 {
+        color: $transition-metal;
+        border-bottom: .4rem solid $transition-metal;
+    }
+    .color-info-5 {
+        color: $metaloid;
+        border-bottom: .4rem solid $metaloid;
+    }
+    .color-info-6 {
+        color: $metal;
+        border-bottom: .4rem solid $metal;
+    }
+    .color-info-7 {
+        color: $halojen;
+        border-bottom: .4rem solid $halojen;
+    }
+    .color-info-8 {
+        color: $soygaz;
+        border-bottom: .4rem solid $soygaz;
+    }
+    .color-info-9 {
+        color: $lantanit;
+        border-bottom: .4rem solid $lantanit;
+    }
+    .color-info-10 {
+        color: $actinide;
+        border-bottom: .4rem solid $actinide;
+    }
+}
+
