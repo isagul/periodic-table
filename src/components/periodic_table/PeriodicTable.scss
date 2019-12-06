@@ -2,7 +2,7 @@
 
 .periodic-table-component {   
     // width:1530px; 
-    width: 80vw;
+    width: 81vw;
     margin-top: 10rem;
     padding: 1rem;    
     position: relative;
@@ -16,6 +16,7 @@
         &:nth-child(5) {
             display: flex;
             flex-wrap: wrap;
+            width:81vw;
         }     
     }
     .periodic-table-footer {
@@ -88,10 +89,184 @@
         background: $actinide;
     }
     .add-opacity {
-        opacity: .2;
+        opacity: .1;
     }
     .remove-opacity {
         opacity: 1;
     }
 }
 
+.modal-mask {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: opacity 0.3s ease;
+    .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+        .modal-container {
+            max-width: 700px;
+            height: 100%;
+            max-height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            transition: all 0.2s cubic-bezier(1,.53,0,.52);
+            position: relative;
+            color: #fff;
+            padding: 20px;
+            .modal-header {
+                padding: 0;
+                .modal-default-button {                    
+                    outline: none;
+                    position: absolute;
+                    z-index:100;
+                    top: 8px;
+                    right: 8px;
+                    font-weight: bold;
+                    width: 34px;
+                    height: 34px;
+                    font-size: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #fff;
+                    border-radius: 50%;
+                    box-shadow: 0 0 0 6px;
+                    border: none;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                  }
+            }
+            .modal-body {
+                width: 100%;
+                height: 100%;
+                border: 2px solid #FFF;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-content: flex-end;
+                position: relative;
+                .info {
+                    .head {
+                        display: flex;
+                        justify-content: space-between;
+                        .name {
+                            font-size: 2em;
+                        }
+                        .group_name {
+                            font-size: 2em;
+                        }
+                    }
+                    .name_small {
+                        font-size: 13em;
+                        text-align: center;
+                    }
+                    .detail {
+                        display: flex;
+                        .molar {
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            padding: 20px;
+                            font-size: 2.5em;
+                        }
+                        .number {
+                            position: absolute;
+                            right: 0;
+                            bottom: -8px;
+                            padding: 20px;
+                            background: #fff;
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: flex-end;
+                            font-size: 2.5em;
+                            overflow: hidden;
+                            width: 170px;
+                            height: 170px;
+                            font-weight: bold;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                width: 290px;
+                                height: 125px;
+                                transform: rotate(-45deg);
+                                top: 0;
+                                right: -2px;
+                                box-shadow: -1px -1px 10px -2px rgba(0,0,0,.5);
+                            }
+                        }
+                    }
+                }   
+            } 
+          }
+          
+    }       
+    .color-modal-1 {
+        color: $non-matel;
+        &::after {
+            background: $non-matel;
+        }
+    }
+    .color-modal-2 {
+        color: $alkal-metal;
+        &::after {
+            background: $alkal-metal;
+        }
+    }
+    .color-modal-3 {
+        color: $alkaline-metal;
+        &::after {
+            background: $alkaline-metal;
+        }
+    }
+    .color-modal-4 {
+        color: $transition-metal;
+        &::after {
+            background: $transition-metal;
+        }
+    }
+    .color-modal-5 {
+        color: $metaloid;
+        &::after {
+            background: $metaloid;
+        }
+    }
+    .color-modal-6 {
+        color: $metal;
+        &::after {
+            background: $metal;
+        }
+    }
+    .color-modal-7 {
+        color: $halojen;
+        &::after {
+            background: $halojen;
+        }
+    }
+    .color-modal-8 {
+        color: $soygaz;
+        &::after {
+            background: $soygaz;
+        }
+    }
+    .color-modal-9 {
+        color: $lantanit;
+        &::after {
+            background: $lantanit;
+        }
+    }
+    .color-modal-10 {
+        color: $actinide;
+        &::after {
+            background: $actinide;
+        }
+    }
+}

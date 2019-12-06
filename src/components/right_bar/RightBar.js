@@ -6,11 +6,10 @@ const RightBar = (props) => {
     const { state } = useContext(Store);
     const [uniqueElements, setUniqueElements] = useState([]);
     const [hoveredGroupName, setHoveredGroupName] = useState({});
-    const [clickedGroupName, setClickedGroupName] = useState({});
-    const { elements } = state;
+    // const [clickedGroupName, setClickedGroupName] = useState({});
 
     useEffect(() => {
-        console.log(elements);
+        const { elements } = state;
         setUniqueElements(extractAndDistinct(elements));
     }, [state]);
 
@@ -38,7 +37,7 @@ const RightBar = (props) => {
 
     const mouseClickGroupName = (element) => {
         console.log(element);
-        setClickedGroupName(element);
+        // setClickedGroupName(element);
     }
 
 

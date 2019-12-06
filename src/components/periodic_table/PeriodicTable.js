@@ -10,6 +10,9 @@ const PeriodicTable = () => {
     const [finalHoveredElement, setFinalHoveredElement] = useState({});
     const [hoveredGroup, setHoveredGroup] = useState({});
     const [isAnyHoveredName, setIsAnyHoveredName] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+    const [clickedElement, setClickedElement] = useState({});
+
 
     const elementButton = (startIndex, endIndex) => {
         return (
@@ -22,6 +25,7 @@ const PeriodicTable = () => {
                                 <button
                                     className={`color-${element.group_id} ${element.group_id === hoveredGroup.group_id ? 'remove-opacity' : 'add-opacity'}`}
                                     key={index}
+                                    onClick={() => setShow(true, element)}
                                     onMouseOver={() => getHoveredElement(element)}>
                                     {
                                         element.molar !== null &&
@@ -33,6 +37,7 @@ const PeriodicTable = () => {
                                 <button
                                     className={`color-${element.group_id}`}
                                     key={index}
+                                    onClick={() => setShow(true, element)}
                                     onMouseOver={() => getHoveredElement(element)}>
                                     {
                                         element.molar !== null &&
@@ -48,6 +53,17 @@ const PeriodicTable = () => {
         )
     }
 
+    function setShow(value, element){          
+        if (element === null) {
+            setIsVisible(value);
+        } else {
+            if (element.id !== 119 && element.id !== 120) {
+                setClickedElement(element);
+                setIsVisible(value);
+            }  
+        }  
+    }
+
     function getHoveredElement(element) {
         if (element.id !== 119 && element.id !== 120) {
             setHoveredElement(element);
@@ -56,17 +72,47 @@ const PeriodicTable = () => {
     }
 
     const handleMouseOverRightBar = (element) => {
-        setHoveredGroup(element)
+        setHoveredGroup(element);
         setHoveredElement(element, 'group_name');
         setIsAnyHoveredName(true);
-        document.getElementById('elInfo').style.top = "5vw";
+        document.getElementById('elInfo').style.top = "6vw";
     }
 
     const handleMouseLeftRightBar = () => {
         setHoveredGroup(finalHoveredElement)
         setHoveredElement(finalHoveredElement)
         setIsAnyHoveredName(false);
-        document.getElementById('elInfo').style.top = "0";
+        document.getElementById('elInfo').style.top = "3rem";
+    }
+
+    const modal = () =>{
+        return (
+            <div className="modal-mask">
+                <div className="modal-wrapper">
+                    <div className={`modal-container color-${clickedElement.group_id}`}>
+                        <div className="modal-header">
+                            <button 
+                                className={`modal-default-button color-modal-${clickedElement.group_id}`} onClick={() => setShow(false, null)}>
+                                    x
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="info">
+                                <div className="head">
+                                    <h3 className="name">{clickedElement.name_ing}</h3>
+                                    <h3 className="group_name">{clickedElement.group_name}</h3>
+                                </div>
+                                <h1 className="name_small">{clickedElement.name_small}</h1>
+                                <div className="detail">
+                                <h5 className="molar">{clickedElement.molar}<em> g / mol</em></h5>
+                                <h5 className={`number color-modal-${clickedElement.group_id}`}>{clickedElement.el_order}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -97,12 +143,14 @@ const PeriodicTable = () => {
             <div className="periodic-table-footer">
                 {elementButton(90, 120)}
             </div>
-            <RightBar 
-                overGroupName={handleMouseOverRightBar} 
-                leaveGroupName={handleMouseLeftRightBar} 
+            <RightBar
+                overGroupName={handleMouseOverRightBar}
+                leaveGroupName={handleMouseLeftRightBar}
             />
+            {
+                isVisible && modal()
+            }
         </div>
-
     )
 }
 
