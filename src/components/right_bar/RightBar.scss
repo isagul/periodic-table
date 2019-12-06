@@ -25,13 +25,13 @@
         }
     }
     .description {
+        margin-top: 5rem;
         .items {
-            margin-bottom: 5px;
             display: flex;
             align-items: center;
             display: flex;
             font-size: 1vw;
-            transition: 0.5s all ease;
+            height: 30px;
             &:hover {
                 cursor: pointer;
             }
@@ -73,5 +73,11 @@
                 background: $actinide;
               }
         }
+    }
+    .blur {
+      opacity: .5;
+    }
+    .set {
+      text-decoration: line-through;
     }
 }

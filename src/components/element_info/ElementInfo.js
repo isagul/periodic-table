@@ -18,11 +18,11 @@ const ElementInfo = ({ element }) => {
                     </div>
                     <div className="detail">
                         <div className="detail-atom">
-                            <p className="info">Atom Number</p>
+                            <p className="info">Atom Numarası</p>
                             <p className={`val color-info-${element.group_id}`}>{element.el_order}</p>
                         </div>
                         <div className="detail-atom">
-                            <p className="info">Atom Mass</p>
+                            <p className="info">Atom Kütlesi</p>
                             <p className={`val color-info-${element.group_id}`}>{Number.parseFloat(element.molar).toFixed(2)} <span>g/mol</span></p>
                         </div>
                     </div> 

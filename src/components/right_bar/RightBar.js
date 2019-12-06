@@ -5,6 +5,8 @@ import './RightBar.scss';
 const RightBar = (props) => {
     const { state } = useContext(Store);
     const [uniqueElements, setUniqueElements] = useState([]);
+    const [hoveredGroupName, setHoveredGroupName] = useState({});
+    const [clickedGroupName, setClickedGroupName] = useState({});
     const { elements } = state;
 
     useEffect(() => {
@@ -24,20 +26,47 @@ const RightBar = (props) => {
         return Array.from(uniq).map(e => JSON.parse(e));
     }
 
+    const mouseOverGroupName = (element) => {
+        setHoveredGroupName(element);
+        props.overGroupName(element);
+    }
+
+    const mouseLeaveGroupName = (element) => {
+        props.leaveGroupName(element);
+        setHoveredGroupName({});
+    }
+
+    const mouseClickGroupName = (element) => {
+        console.log(element);
+        setClickedGroupName(element);
+    }
+
+
     return (
         <div className="right-menu">
             <div className="text">
-                <h3>Periodic Table</h3>
+                <h3>Periyodik Tablo</h3>
             </div>
             <div className="description">
                 {
                     uniqueElements.map((element, index) => {
                         return (
-                            <div key={index} 
-                            className={`items color-bar-${element.group_id}`} 
-                            onMouseOver={() => props.overGroupName(element)}
-                            onMouseLeave={() => props.leaveGroupName(element)}
-                            >{element.group_name}</div>
+                            <>
+                                {
+                                    Object.keys(hoveredGroupName).length > 0 ?
+                                    <div key={index} 
+                                        className={`items color-bar-${element.group_id} 
+                                        ${hoveredGroupName.group_id !== element.group_id && 'blur'}`} 
+                                        onMouseOver={() => mouseOverGroupName(element)}
+                                        onMouseLeave={() => mouseLeaveGroupName(element)}
+                                        onClick={() => mouseClickGroupName(element)}
+                                    >{element.group_name}</div> : 
+                                    <div key={index} 
+                                        className={`items color-bar-${element.group_id}`} 
+                                        onMouseOver={() => mouseOverGroupName(element)}
+                                        onMouseLeave={() => mouseLeaveGroupName(element)}>{element.group_name}</div>
+                                }
+                            </>
                         )
                     })
                 }

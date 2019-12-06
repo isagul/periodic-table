@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './store';
 import PeriodicTable from './components/periodic_table/PeriodicTable';
-import RightBar from './components/right_bar/RightBar';
 import './App.scss';
 
 function App() {

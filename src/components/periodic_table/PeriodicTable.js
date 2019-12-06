@@ -7,7 +7,7 @@ import RightBar from '../right_bar/RightBar';
 const PeriodicTable = () => {
     const { state } = useContext(Store);
     const [hoveredElement, setHoveredElement] = useState({});
-    const [finalElement, setFinalElement] = useState({});
+    const [finalHoveredElement, setFinalHoveredElement] = useState({});
     const [hoveredGroup, setHoveredGroup] = useState({});
     const [isAnyHoveredName, setIsAnyHoveredName] = useState(false);
 
@@ -51,7 +51,7 @@ const PeriodicTable = () => {
     function getHoveredElement(element) {
         if (element.id !== 119 && element.id !== 120) {
             setHoveredElement(element);
-            setFinalElement(element);
+            setFinalHoveredElement(element);
         }
     }
 
@@ -62,9 +62,9 @@ const PeriodicTable = () => {
         document.getElementById('elInfo').style.top = "5vw";
     }
 
-    const handleMouseLeftRightBar = (element) => {
-        setHoveredGroup(finalElement)
-        setHoveredElement(finalElement)
+    const handleMouseLeftRightBar = () => {
+        setHoveredGroup(finalHoveredElement)
+        setHoveredElement(finalHoveredElement)
         setIsAnyHoveredName(false);
         document.getElementById('elInfo').style.top = "0";
     }
