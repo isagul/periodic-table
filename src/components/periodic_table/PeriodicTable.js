@@ -75,14 +75,12 @@ const PeriodicTable = () => {
         setHoveredGroup(element);
         setHoveredElement(element, 'group_name');
         setIsAnyHoveredName(true);
-        document.getElementById('elInfo').style.top = "6vw";
     }
 
     const handleMouseLeftRightBar = () => {
         setHoveredGroup(finalHoveredElement)
         setHoveredElement(finalHoveredElement)
         setIsAnyHoveredName(false);
-        document.getElementById('elInfo').style.top = "3rem";
     }
 
     const modal = () =>{
@@ -117,10 +115,11 @@ const PeriodicTable = () => {
 
     return (
         <div className="periodic-table-component">
-            <ElementInfo element={hoveredElement} />
             <div className="periodic-table">
                 {elementButton(0, 2)}
+
             </div>
+
             <div className="periodic-table">
                 <div>
                     {elementButton(2, 4)}
@@ -133,6 +132,7 @@ const PeriodicTable = () => {
                 <div>
                     {elementButton(10, 12)}
                 </div>
+                <ElementInfo element={hoveredElement} />
                 <div>
                     {elementButton(12, 18)}
                 </div>
@@ -140,7 +140,7 @@ const PeriodicTable = () => {
             <div className="periodic-table">
                 {elementButton(18, 90)}
             </div>
-            <div className="periodic-table-footer">
+            <div className="periodic-table footer">
                 {elementButton(90, 120)}
             </div>
             <RightBar

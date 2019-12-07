@@ -1,14 +1,11 @@
 @import '../../variables.scss';
 
 .element-info {
-    /*top: 105px;
-    left: 215px;*/
     position: absolute;
-    left: calc(11vw - 7.11112px);
-    height: 200px;
-    width: calc(42vw - 5.5556px);
+    left: calc(8.63334vw - 1.11112px);
+    bottom: 0;
+    width: calc(41.3667vw - 5.5556px);
     z-index: 999;
-    top:3rem;
     background: transparent;
     color: #000;
     .title {
