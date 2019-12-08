@@ -1,7 +1,6 @@
 @import '../../variables.scss';
 
-.periodic-table-component {   
-    // width:1530px; 
+.periodic-table-component {  
     width: 75vw;
     margin-top: 10rem;
     padding: 1rem;
@@ -22,10 +21,6 @@
 
     }
     button {
-        /*height: 80px;
-        width: 80px;*/
-        /*width: calc(4.4vw - 5px);
-        height: calc(3.70667vw - .55556px);*/
         width: calc(3.70667vw - .55556px);
         height: calc(3.70667vw - .55556px);
         border:none;
@@ -52,7 +47,6 @@
             cursor: pointer;
             background: #323232;
             border-color: #000;
-            opacity: 1;
         }
     }
     .color-1 {

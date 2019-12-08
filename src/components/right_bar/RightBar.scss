@@ -77,7 +77,32 @@
     .blur {
       opacity: .5;
     }
+    .no-blur {
+      opacity: 1;
+    }
     .set {
       text-decoration: line-through;
+    }
+    .no-set {
+      text-decoration: none;
+    }
+    .github {    
+      text-decoration: none;
+      div {
+        background-color: black;      
+        text-align:center;
+        padding: 8px 0;
+        opacity: .8;
+        margin-top: 1rem;
+        color:white;
+      }      
+    }
+    .project-info {
+      text-align: center;
+      a {
+        &:hover {
+          color: #F2C201;
+        }
+      }
     }
 }

@@ -12,6 +12,8 @@ const PeriodicTable = () => {
     const [isAnyHoveredName, setIsAnyHoveredName] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [clickedElement, setClickedElement] = useState({});
+    const [clickedName, setClickedName] = useState({});
+    const [isClickedGroupName, setIsClickedGroupName] = useState(false);
 
 
     const elementButton = (startIndex, endIndex) => {
@@ -19,35 +21,18 @@ const PeriodicTable = () => {
             state.elements.length > 0 &&
             state.elements.slice(startIndex, endIndex).map((element, index) => {
                 return (
-                    <>
-                        {
-                            Object.keys(hoveredGroup).length > 0 && isAnyHoveredName ?
-                                <button
-                                    className={`color-${element.group_id} ${element.group_id === hoveredGroup.group_id ? 'remove-opacity' : 'add-opacity'}`}
-                                    key={index}
-                                    onClick={() => setShow(true, element)}
-                                    onMouseOver={() => getHoveredElement(element)}>
-                                    {
-                                        element.molar !== null &&
-                                        <p className="molar">{Number.parseFloat(element.molar).toFixed(2)}</p>
-                                    }
-                                    <p className="group-name">{element.name_small}</p>
-                                    <p className="el-order"> {element.el_order}</p>
-                                </button> :
-                                <button
-                                    className={`color-${element.group_id}`}
-                                    key={index}
-                                    onClick={() => setShow(true, element)}
-                                    onMouseOver={() => getHoveredElement(element)}>
-                                    {
-                                        element.molar !== null &&
-                                        <p className="molar">{Number.parseFloat(element.molar).toFixed(2)}</p>
-                                    }
-                                    <p className="group-name">{element.name_small}</p>
-                                    <p className="el-order"> {element.el_order}</p>
-                                </button>
-                        }
-                    </>
+                        <button
+                            className={`color-${element.group_id} ${isAnyHoveredName ? element.group_id === hoveredGroup.group_id ? 'remove-opacity' : 'add-opacity' : 'remove-opacity'}`}
+                            key={index}
+                            onClick={() => setShow(true, element)}
+                            onMouseOver={() => getHoveredElement(element)}>
+                            {
+                                element.molar !== null &&
+                                <p className="molar">{Number.parseFloat(element.molar).toFixed(2)}</p>
+                            }
+                            <p className="group-name">{element.name_small}</p>
+                            <p className="el-order"> {element.el_order}</p>
+                        </button> 
                 )
             })
         )
@@ -65,22 +50,44 @@ const PeriodicTable = () => {
     }
 
     function getHoveredElement(element) {
-        if (element.id !== 119 && element.id !== 120) {
-            setHoveredElement(element);
-            setFinalHoveredElement(element);
+        if (isClickedGroupName === false) {
+            if (element.id !== 119 && element.id !== 120) {
+                setHoveredElement(element);
+                setFinalHoveredElement(element);
+            }
         }
+        
     }
 
-    const handleMouseOverRightBar = (element) => {
-        setHoveredGroup(element);
-        setHoveredElement(element, 'group_name');
-        setIsAnyHoveredName(true);
+    const handleMouseOverRightBar = (name) => {
+        if (isClickedGroupName === false) {
+            setHoveredGroup(name);
+            setHoveredElement(name, 'group_name');
+            setIsAnyHoveredName(true);
+        }
+        
     }
 
-    const handleMouseLeftRightBar = () => {
-        setHoveredGroup(finalHoveredElement)
-        setHoveredElement(finalHoveredElement)
-        setIsAnyHoveredName(false);
+    const handleMouseLeftRightBar = (name,event) => {
+        if (isClickedGroupName === false) {
+            setHoveredGroup(finalHoveredElement)
+            setHoveredElement(finalHoveredElement)
+            setIsAnyHoveredName(false);
+        }
+        
+    }
+
+    const handleClickedRightBar = (name) => {
+        if (clickedName.group_id === name.group_id) {
+            setIsClickedGroupName(false);
+        } else {
+            setIsClickedGroupName(true);
+            setHoveredGroup(name);
+            setHoveredElement(name, 'group_name');
+            setIsAnyHoveredName(true);
+            setClickedName(name);
+        }
+        
     }
 
     const modal = () =>{
@@ -146,6 +153,7 @@ const PeriodicTable = () => {
             <RightBar
                 overGroupName={handleMouseOverRightBar}
                 leaveGroupName={handleMouseLeftRightBar}
+                clickGroupName={handleClickedRightBar}
             />
             {
                 isVisible && modal()
