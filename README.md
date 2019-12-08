@@ -12,6 +12,4 @@ This periodic table project is a table developed for the classification of chemi
 1. Dark Mode
 2. Multilanguage
 
-This project inspired by [this project].
-
-[this project]:(https://github.com/edisdev/periodic-table)
+This project inspired by [this project](https://github.com/edisdev/periodic-table)
