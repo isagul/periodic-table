@@ -1,10 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './store';
+import { css } from '@emotion/core';
 import PeriodicTable from './components/periodic_table/PeriodicTable';
+import { PacmanLoader } from 'react-spinners';
 import './App.scss';
 
 function App() {
-  const { dispatch } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+
+  const override = css`
+    position:absolute;
+    top: 50%;
+    left: 33%;
+  `;
 
   useEffect(() => {
     const fetchElements = () => {
@@ -16,6 +24,10 @@ function App() {
             type: 'SET_ELEMENTS',
             payload: resp.data
           })
+          dispatch({
+            type: 'SET_LOADING',
+            payload: false
+          })
         }
       });
     }
@@ -25,7 +37,14 @@ function App() {
 
   return (
     <div className="app">
-      <PeriodicTable />      
+      <PeriodicTable />    
+      <PacmanLoader
+        css={override}
+        sizeUnit={"px"}
+        size={20}
+        color={'#36d7b7'}
+        loading={state.loading}
+      />  
     </div>
   );
 }

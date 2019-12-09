@@ -1,6 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Store } from '../../store';
 import './RightBar.scss';
+import { css } from '@emotion/core';
+import { PacmanLoader } from 'react-spinners';
 
 const RightBar = (props) => {
     const { state } = useContext(Store);
@@ -9,6 +11,11 @@ const RightBar = (props) => {
     const [clickedIndex, setClickedIndex] = useState("");
     const [clickedName, setClickedName] = useState({});
     const [isClickedGroupName, setIsClickedGroupName] = useState(false);
+
+    const override = css`
+    position:absolute;
+    left: 46%;
+    `;
 
     useEffect(() => {
         const { elements } = state;
@@ -59,6 +66,16 @@ const RightBar = (props) => {
             <div className="text">
                 <h3>Periyodik Tablo</h3>
             </div>
+            {
+                state.loading && 
+                <PacmanLoader
+                    css={override}
+                    sizeUnit={"px"}
+                    size={20}
+                    color={'#36d7b7'}
+                    loading={state.loading}
+                /> 
+            }
             <div className="description">
                 {
                     uniqueElements.map((element, index) => {
@@ -72,11 +89,11 @@ const RightBar = (props) => {
                         )
                     })
                 }
-            </div>
+            </div>            
             <a className="github" href="https://github.com/isagul/periodic-table" target="_blank" rel="noopener noreferrer">
                 <div>View on GitHub</div>
             </a>
-            <p className="project-info">This project inspired by <a href="https://github.com/edisdev/periodic-table" target="_blank" rel="noopener noreferrer">this</a></p>
+            <p className="project-info">I was inspired by <a href="https://github.com/edisdev/periodic-table" target="_blank" rel="noopener noreferrer">this project</a></p>
         </div>
     )
 }
