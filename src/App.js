@@ -15,8 +15,8 @@ function App() {
   `;
 
   useEffect(() => {
-    const fetchElements = () => {
-      fetch('https://periodic-table-10001.herokuapp.com/api/v1/elements')
+     (async () => {
+      await fetch('https://periodic-table-10001.herokuapp.com/api/v1/elements')
       .then(response => response.json())
       .then(resp => {
         if (resp.status === "SUCCESS") {
@@ -30,8 +30,7 @@ function App() {
           })
         }
       });
-    }
-    fetchElements();
+    })()
   }, [dispatch]);
 
 
