@@ -10,6 +10,5 @@ This periodic table project is a table developed for the classification of chemi
 
 ## Todo
 1. Dark Mode
-2. Multilanguage
 
 This project inspired by [this project](https://github.com/edisdev/periodic-table)

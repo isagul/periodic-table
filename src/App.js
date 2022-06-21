@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './store';
 import { css } from '@emotion/core';
-import PeriodicTable from './components/periodic_table/PeriodicTable';
+import PeriodicTable from './components/PeriodicTable/PeriodicTable';
 import { PacmanLoader } from 'react-spinners';
 import './App.scss';
 

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { StoreProvider } from './store';
 import * as serviceWorker from './serviceWorker';
+import 'utils/i18n';
 
 ReactDOM.render(
     <StoreProvider>

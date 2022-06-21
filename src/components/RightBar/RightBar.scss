@@ -9,7 +9,7 @@
     top: 0;
     padding: 20px;
     box-shadow: -2px 5px 10px rgba(0,0,0,.3);
-    .text {
+    .right-bar-header {
         h3 {
             text-align: center;
             line-height: 50px;
@@ -24,8 +24,18 @@
             }
         }
     }
+    .flag-area {
+      display: flex;
+      justify-content: space-around;
+    }
+    .current-lang {
+      border: 2px solid rgb(93, 62, 189);
+      border-radius: 50%;
+      padding: 2px;
+      transition: padding .1s;
+    }
     .description {
-        margin-top: 5rem;
+        margin-top: 2rem;
         .items {
             display: flex;
             align-items: center;
@@ -89,21 +99,15 @@
     .github {    
       text-decoration: none;
       div {
+        position: fixed;
+        bottom: 0;
+        right: 0;
         background-color: black;      
         text-align:center;
         padding: 8px 0;
         opacity: .8;
-        margin-top: 1rem;
         color:white;
+        width: calc(25vw - 40px); 
       }      
-    }
-    .project-info {
-      text-align: center;
-      font-size: 14px;
-      a {
-        &:hover {
-          color: #F2C201;
-        }
-      }
     }
 }
